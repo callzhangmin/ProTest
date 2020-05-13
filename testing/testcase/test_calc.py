@@ -14,25 +14,30 @@ class TestCalc:
     def setup(self):
         self.calc = Calc()
 
+    @pytest.mark.add
     @pytest.mark.parametrize('num1,num2,expect', yaml.safe_load(open('../datas/add.yml')))
     def calc_add(self, num1, num2, expect):
         result = self.calc.add(num1, num2)
         assert expect == result
 
-    @pytest.mark.parametrize('num1,num2,expect',yaml.safe_load(open('../datas/sub.yml')))
+    @pytest.mark.sub
+    @pytest.mark.parametrize('num1,num2,expect', yaml.safe_load(open('../datas/sub.yml')))
     def calc_sub(self, num1, num2, expect):
         result = self.calc.sub(num1, num2)
         assert expect == result
 
+    @pytest.mark.mul
     @pytest.mark.parametrize('num1,num2,expect', yaml.safe_load(open('../datas/mul.yml')))
     def calc_mul(self, num1, num2, expect):
         result = self.calc.mul(num1, num2)
         assert expect == result
 
+    @pytest.mark.div
     @pytest.mark.parametrize('num1,num2,expect', yaml.safe_load(open('../datas/div.yml')))
     def calc_div(self, num1, num2, expect):
         result = self.calc.div(num1, num2)
         assert expect == result
+
 
 if __name__ == '__main__':
     pytest.main()
