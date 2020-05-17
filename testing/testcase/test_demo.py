@@ -14,6 +14,7 @@ from selenium.webdriver.common.by import By
 
 
 class TestDemo():
+
     def setup_method(self, method):
         self.driver = webdriver.Chrome()
         self.vars = {}
